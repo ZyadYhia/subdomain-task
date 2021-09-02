@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Location extends Model
 {
     use HasFactory;
-    protected $fillable = ['provider_id', 'location'];
+    protected $fillable = [
+        'latitude',
+        'user_id',
+        'longitude',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-    public function translate($location_no, $location)
-    {
-        return json_decode($this->location_no)->$location;
     }
 }

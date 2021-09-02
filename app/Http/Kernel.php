@@ -54,6 +54,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'can-enter-dashboard' => \App\Http\Middleware\CanEnterDashboard::class,
+        'admin' => \App\Http\Middleware\isAdmin::class,
+        'superadmin' => \App\Http\Middleware\isSuperadmin::class,
+        'provider' => \App\Http\Middleware\isProvider::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

@@ -16,30 +16,13 @@ class LocationSeeder extends Seeder
      */
     public function run()
     {
-        $providerRole = Role::where('name', 'provider')->first()->id;
-        $provider = User::where('role_id', $providerRole)->first();
-        Location::create([
-            'user_id' => $provider->id,
-            'location_1' => json_encode([
-                'long' => 25,
-                'latt' => 15,
-            ]),
-            'location_2' => json_encode([
-                'long' => 35,
-                'latt' => 25,
-            ]),
-            'location_3' => json_encode([
-                'long' => 45,
-                'latt' => 35,
-            ]),
-            'location_4' => json_encode([
-                'long' => 55,
-                'latt' => 45,
-            ]),
-            'location_5' => json_encode([
-                'long' => 65,
-                'latt' => 55,
-            ]),
-        ]);
+        $providerId = Role::where('name', 'provider')->first()->id;
+        for ($i = 0; $i < 5; $i++) {
+            Location::create([
+                'user_id' => User::where('role_id', $providerId)->first()->id,
+                'longitude' => ($i * 15),
+                'latitude' => ($i * 10),
+            ]);
+        }
     }
 }

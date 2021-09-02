@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Providers\FortifyServiceProvider;
 
 return [
 
@@ -55,7 +55,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-    // 'short_url' => preg_replace(pattern:'#^https?://#', replacement:'', rtrim(env(key:'APP_URL',default:'http://localhost'), charlist:'/')),
+
     'asset_url' => env('ASSET_URL', null),
 
     /*
@@ -141,7 +141,6 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -168,7 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        App\Providers\FortifyServiceProvider::class,
         /*
          * Application Service Providers...
          */

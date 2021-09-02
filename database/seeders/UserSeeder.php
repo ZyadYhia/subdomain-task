@@ -16,29 +16,24 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $superadmin = Role::where('name', 'superadmin')->first();
-        $admin = Role::where('name', 'admin')->first();
-        $provider = Role::where('name', 'provider')->first();
         User::create([
-            'name' => 'task superadmin',
-            'user_name' => 'task_superadmin',
+            'name' => 'superadmin',
             'password' => Hash::make('123456789'),
-            'email' => 'superadmin@oneapp.com',
-            'role_id' => $superadmin->id,
+            'email' => 'superadmin@system.com',
+            'role_id' => Role::where('name', 'superadmin')->first()->id,
         ]);
         User::create([
-            'name' => 'task admin',
-            'user_name' => 'task_admin',
+            'name' => 'admin',
             'password' => Hash::make('123456789'),
-            'email' => 'admin@oneapp.com',
-            'role_id' => $admin->id,
+            'email' => 'admin@system.com',
+            'role_id' => Role::where('name', 'admin')->first()->id,
         ]);
         User::create([
-            'name' => 'task provider',
-            'user_name' => 'task_provider',
+            'name' => 'provider',
             'password' => Hash::make('123456789'),
-            'email' => 'provider@oneapp.com',
-            'role_id' => $provider->id,
+            'email' => 'provider@system.com',
+            'user_name' => 'provider',
+            'role_id' => Role::where('name', 'provider')->first()->id,
         ]);
     }
 }
